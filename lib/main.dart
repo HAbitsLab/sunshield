@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
 import 'firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:cupertino_icons/cupertino_icons.dart';
 
 const primaryColor = Color(0xFFF3D184);
 
@@ -69,31 +70,47 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Text(
               'Thank you for participating in the MUSE app Demo\n',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 50.0),
+            SizedBox(height: 20.0),
             Text(
               '"Sunshield"',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Image.asset(
               'assets/images/ic_launcher.png',
               width: 200,
               height: 200,
             ),
-            SizedBox(height: 200.0),
+            SizedBox(height: 50.0),
             Text(
               'Enter your first name (or an alias) as your User ID  —  don\'t use numbers',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 12,
               ),
             ),
-            SizedBox(height: 40.0),
+            SizedBox(height: 20.0),
             TextFormField(
+              textAlign: TextAlign.center,
+              cursorColor: primaryColor,
               controller: _userIdController,
               decoration: InputDecoration(
-                labelText: '   User ID',
-              ),
+                  enabledBorder: UnderlineInputBorder(
+                    // borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    // borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(
+                      color: primaryColor,
+                    ),
+                  ),
+                  alignLabelWithHint: true,
+                  label: const Center(
+                    child: Text('User ID'),
+                  )),
               onChanged: _validateUserId,
             ),
             if (_userIdError != null)
@@ -248,54 +265,62 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 16),
-          Text(
-            '  Welcome to the MUSE: Demo app',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            '  This app is for self-logging UV protection behaviours.\n'
-            '  The survey contains widgets for reporting clothing and sunscreen use.\n\n',
-            style: TextStyle(fontSize: 16),
-          ),
-          Text(
-            '  How to use:',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          Text(
-              '  Tap the + button and complete the survey every time you go outside.'),
-          SizedBox(height: 48),
-          Text(
-            '  Previous entries:',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 16),
-          Expanded(
-            child: ListView.builder(
-              itemCount: entries.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(entries[index].formattedDate),
-                  subtitle: Text('CLOTHING:  '
-                      'head = ${entries[index].carouselIndex}  '
-                      'torso = ${entries[index].carousel2Index}  '
-                      'legs = ${entries[index].carousel3Index}  '
-                      'feet = ${entries[index].carousel4Index}\n'
-                      'SUNSCREEN:  '
-                      'head = ${entries[index].carousel5Index}  '
-                      'torso = ${entries[index].carousel6Index}  '
-                      'legs = ${entries[index].carousel7Index}  '
-                      'feet = ${entries[index].carousel8Index}'),
-                  trailing:
-                      Text('duration: ${entries[index].formattedDuration}'),
-                );
-              }, // itemBuilder
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 16),
+            Text(
+              'Welcome to the MUSE: Demo app',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-          ),
-        ], // children
+            Text(
+              'This app is for self-logging UV protection behaviours.'
+              'The survey contains widgets for reporting clothing and sunscreen use.\n',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              'How to use:',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Text(
+                'Tap the + button and complete the survey every time you go outside.',
+                style: TextStyle(fontSize: 16)),
+            SizedBox(height: 48),
+            Text(
+              'Previous entries:',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            Expanded(
+              child: ListView.builder(
+                itemCount: entries.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(entries[index].formattedDate,
+                        style: TextStyle(fontSize: 13)),
+                    subtitle: Text(
+                        'CLOTHING:  '
+                        'head = ${entries[index].carouselIndex}  '
+                        'torso = ${entries[index].carousel2Index}  '
+                        'legs = ${entries[index].carousel3Index}  '
+                        'feet = ${entries[index].carousel4Index}\n'
+                        'SUNSCREEN:  '
+                        'head = ${entries[index].carousel5Index}  '
+                        'torso = ${entries[index].carousel6Index}  '
+                        'legs = ${entries[index].carousel7Index}  '
+                        'feet = ${entries[index].carousel8Index}',
+                        style: TextStyle(fontSize: 13)),
+                    trailing: Text(
+                        'duration: ${entries[index].formattedDuration}',
+                        style: TextStyle(fontSize: 13)),
+                  );
+                }, // itemBuilder
+              ),
+            ),
+          ], // children
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -459,13 +484,13 @@ class _SurveyPageState extends State<SurveyPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             Text(
-              'Select the clothing that is closest to your own\n',
+              'Select the clothing that is closest to your own',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Row(
@@ -586,15 +611,15 @@ class _SurveyPageState extends State<SurveyPage> {
                 ], // children
               ),
             ),
-            SizedBox(height: 24.0),
+            SizedBox(height: 10.0),
             Text(
               'Tap the left and right arrows to choose clothes',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 14),
             ),
-            SizedBox(height: 32.0),
+            SizedBox(height: 10.0),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 300.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: ElevatedButton(
                 onPressed: () {
                   _navigateToNextPage();
@@ -602,10 +627,10 @@ class _SurveyPageState extends State<SurveyPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   foregroundColor: Colors.white,
-                  fixedSize: Size(50, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32.0),
-                  ),
+                  // fixedSize: Size(50, 50),
+                  // shape: RoundedRectangleBorder(
+                  //   borderRadius: BorderRadius.circular(32.0),
+                  // ),
                 ),
                 child: Text('Submit',
                     style: TextStyle(fontWeight: FontWeight.bold)),
@@ -734,16 +759,16 @@ class _SurveyPage2State extends State<SurveyPage2> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             Text(
-              'Select the sunscreen coverage closest to your own\n',
+              'Select the sunscreen coverage closest to your own',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 0.0),
               child: Row(
@@ -870,15 +895,15 @@ class _SurveyPage2State extends State<SurveyPage2> {
                 ], // children
               ),
             ),
-            SizedBox(height: 24.0),
+            SizedBox(height: 10.0),
             Text('Tap the left and right arrows to choose sunscreen coverage',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 14.0,
                 )),
-            SizedBox(height: 32.0),
+            SizedBox(height: 10.0),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 300.0),
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
               child: ElevatedButton(
                 onPressed: () {
                   DateTime now = DateTime.now();
@@ -904,9 +929,9 @@ class _SurveyPage2State extends State<SurveyPage2> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   foregroundColor: Colors.white,
-                  fixedSize: Size(50, 50),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0)),
+                  //   fixedSize: Size(50, 50),
+                  //   shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(32.0)),
                 ),
                 child: Text('Submit',
                     style: TextStyle(fontWeight: FontWeight.bold)),
