@@ -1,0 +1,57 @@
+name: Sunshield
+description: A Flutter app for reporting UV protection behaviors
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.0.0+3
+  path: ^1.8.0
+  shared_preferences: ^2.0.8
+
+
+
+  carousel_slider: ^4.0.0
+  intl: ^0.17.0
+  firebase_core: ^2.13.0
+  cloud_firestore: ^4.7.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+  - assets/Slide1.png
+  - assets/Slide2.png
+  - assets/Slide3.png
+  - assets/Slide4.png
+  - assets/Slide5.png
+  - assets/Slide6.png
+  - assets/Slide7.png
+  - assets/Slide8.png
+  - assets/Slide9.png
+  - assets/Slide10.png
+  - assets/Slide11.png
+  - assets/Slide12.png
+  - assets/Slide13.png
+  - assets/Slide14.png
+  - assets/Slide15.png
+  - assets/Slide16.png
+  - assets/Slide17.png
+  - assets/Slide18.png
+  - assets/Slide19.png
+  - assets/Slide20.png
+  - assets/Slide21.png
+  - assets/Slide22.png
+  - assets/Slide23.png
+  - assets/Slide24.png
+  - assets/Slide25.png
+  - assets/Slide26.png
+  - assets/Slide27.png
+  - assets/Slide28.png
+  - assets/images/

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "865522229832",
+    "project_id": "muse-demo-1d634",
+    "storage_bucket": "muse-demo-1d634.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865522229832:android:125c312ecca22988caee7d",
+        "android_client_info": {
+          "package_name": "com.sunshield.muse_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865522229832-iq93jibpjnkk9ousbvbpvot5vonfan0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ6H8OODNb_EVnFh44PbwxDPuyy3v7lr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865522229832-iq93jibpjnkk9ousbvbpvot5vonfan0j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "865522229832-75mk06ml52bq4ts2973rk6vs4qbai7uv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sunshield.muse_demo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
